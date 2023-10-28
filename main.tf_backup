@@ -1,0 +1,51 @@
+resource "aws_iam_policy" "cross_account_policy" {
+  name        = "CrossAccountPolicy"
+  description = "Policy allowing cross-account access"
+  
+  # Define your policy document here. You can use the AWS Policy Generator or write it manually.
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::example-bucket",
+        "arn:aws:s3:::example-bucket/*"
+      ]
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "cross_account_role" {
+  name = "CrossAccountRole"
+  
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          AWS = "arn:aws:iam::<YOUR-ACCOUNT-ID>:root"
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy_attachment" "attach_policy" {
+  policy_arn = aws_iam_policy.cross_account_policy.arn
+  roles      = [aws_iam_role.cross_account_role.name]
+}
+
+output "cross_account_role_arn" {
+  value = aws_iam_role.cross_account_role.arn
+}
+
