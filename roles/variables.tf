@@ -32,9 +32,9 @@ default = "avanis-asmt-bucket/my-dl"
 
 #define variable value from CDP dashboard
 variable "CDP_ACCOUNT_ID" {
-default = ""
+default = "dummy"
 }
 
 variable "CDP_EXTERNAL_ID" {
-default = ""
+default = "dummy2"
 }

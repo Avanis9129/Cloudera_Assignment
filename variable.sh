@@ -1,0 +1,2 @@
+credential_name = Aws_credential
+Cross_account_role_arn = $Cross_account_role_arn

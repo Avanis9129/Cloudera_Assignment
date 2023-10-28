@@ -31,7 +31,7 @@ resource "aws_iam_role" "cross_account_role" {
 }
 
   policy = [
-    aws_iam_policy.cross-account-policy.arn
+    aws_iam_policy.cross-account-policy.arn,
   ]
 }
 
