@@ -28,7 +28,6 @@ resource "aws_iam_role" "cross_account_role" {
       }
     ]
   })
-}
 
   policy = [
     aws_iam_policy.cross-account-policy.arn,
@@ -189,7 +188,7 @@ resource "aws_iam_role" "DATALAKE_ADMIN" {
   assume_role_policy = file("./policies/aws-cdp-idbroker-role-trust-policy.json")  # Path to your trust policy JSON file
   policy = [
     aws_iam_policy.datalake-restore-policy.arn,
-    aws_iam_policy.datalake-backup-policy.arn
+    aws_iam_policy.datalake-backup-policy.arn,
     aws_iam_policy.datalake-policy.arn,
     aws_iam_policy.bucket-access-policy.arn,
   ]
