@@ -133,3 +133,33 @@ resource "aws_iam_role" "DATALAKE_ADMIN" {
   ]
 }
 
+resource "aws_iam_role" "DATAENG" {
+  name = "DATAENG_ROLE	"
+  assume_role_policy = file("./policies/aws-cdp-idbroker-role-trust-policy.json")  # Path to your trust policy JSON file
+  policy = [
+    aws_iam_policy.dataeng-policy.arn,
+    aws_iam_policy.bucket-access-policy.arn,
+  ]
+}
+
+resource "aws_iam_role" "DATASCI" {
+  name = "DATASCI_ROLE	"
+  assume_role_policy = file("./policies/aws-cdp-idbroker-role-trust-policy.json")  # Path to your trust policy JSON file
+  policy = [
+    aws_iam_policy.datasci-policy.arn,
+    aws_iam_policy.bucket-access-policy.arn,
+  ]
+}
+# Define the IAM instance profile and add the role to it
+resource "aws_iam_instance_profile" "LOG_ROLE" {
+  name = "LOG_ROLE"
+  roles = [aws_iam_role.LOG_ROLE.name]
+}
+
+resource "aws_iam_instance_profile" "IDBROKER_ROLE" {
+  name = "IDBROKER_ROLE"
+  roles = [aws_iam_role.IDBROKER_ROLE.name]
+}
+
+
+
