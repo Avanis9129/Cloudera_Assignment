@@ -1,0 +1,62 @@
+Aws:
+https://149240939734.signin.aws.amazon.com/console
+
+ssh access to 9129 aws vms:
+location: /drives/c/Users/avanist/Downloads
+run: ssh -i "admin_key_9129_east.pem" ec2-user@ec2-34-230-29-225.compute-1.amazonaws.com
+ec2-34-230-29-225.compute-1.amazonaws.com
+
+cdp login:
+Username : psecandidate04qCi&O5aLb)?TI2Tbfx0Sw!2$cOZ%nW=-
+Password: Cloudera@2023
+
+AccessKey: 0db2a962-a8a8-42ff-9968-13edcfe5f6c4
+Secret_key: T3H2YZQo2E9YXxlg2EugC4MrZwfjBPW3067cei42C9A=
+
+Steps installation:
+
+Step1: create cross account Iam role on AWS
+https://docs.cloudera.com/cdp-public-cloud/cloud/requirements-aws/topics/mc-aws-req-credential.html#mc-aws-req-credential
+
+Step2: Create s3 buckets and relavant roles and policies.
+https://docs.cloudera.com/cdp-public-cloud/cloud/requirements-aws/topics/mc-idbroker-minimum-setup.html#mc-idbroker-minimum-setup
+
+Create s3 bucket s3a://my-bucket/my-dl
+Create permissions policies for the minimal setup
+Create the IAM roles and establish trust relationships: IDBROKER_ROLE and LOG_ROLE
+Create the IAM roles and establish trust relationships: RANGER_AUDIT_ROLE and DATALAKE_ADMIN_ROLE
+
+
+Below is the correct url for policies. url mentioned in the document was not opening.
+https://github.com//hortonworks/cloudbreak/blob/master/cloud-aws-common/src/main/resources/definitions/cdp/aws-cdp-log-policy.json
+
+#create bucket
+aws s3api create-bucket --bucket my-bucket (s3a://my-bucket/my-dl)
+
+
+
+
+
+===========================================
+Install Terraform, aws cli, cdp cli etc.
+create cross account Iam role on AWS & create credential
+Create s3 buckets and relevant roles and policies.
+
+After setting up cross account access and deploying required storage infrastructure.
+Install cdp cli (should be taken care in first step)
+Generating an API access key
+Configuring CDP client
+Deploy CDP
+
+
+===================================================================================================
+Prerequisites:
+
+Prior to deploying CDP, you should make sure that your cloud account meets the basic requirements and that you've installed a few prerequisites.
+
+To meet these requirements and install the prerequisites, refer to the following documentations:
+Cloud provider requirements
+Prerequisites for deploying CDP
+You should also familiarize yourself with the background information about CDP deployment patterns and deployment pattern definitions described in Creating and managing CDP deployments.
+Next, you can follow the instructions below for deploying CDP.
+Deploy CDP using Terraform

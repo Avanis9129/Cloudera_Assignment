@@ -1,0 +1,55 @@
+ Error: Invalid provider configuration
+│
+│ Provider "registry.terraform.io/cloudera/cdp" requires explicit configuration. Add a provider block to the root module and
+│ configure the provider's required arguments as described in the provider documentation.
+│
+╵
+╷
+│ Error: Unable to Create CDP API Client
+│
+│   with provider["registry.terraform.io/cloudera/cdp"],
+│   on <empty> line 0:
+│   (source code not available)
+│
+│ An unexpected error occurred when creating the CDP API client. If the error is not clear, please contact Cloudera.
+│
+│ CDP API Client Error: no CDP Credentials from the providers in the default chain
+╵
+
+######################################CDP_permission_Denied ##############################################################
+
+ Error: Error creating Group
+│
+│   with module.cdp_deploy.module.cdp_on_aws[0].cdp_iam_group.cdp_admin_group,
+│   on .terraform/modules/cdp_deploy/modules/terraform-cdp-deploy/modules/aws/main.tf line 78, in resource "cdp_iam_group" "cdp_admin_group":
+│   78: resource "cdp_iam_group" "cdp_admin_group" {
+│
+│ Got error while creating Group: [POST /iam/createGroup][403] createGroup default  &{Code:PERMISSION_DENIED Message:This operation
+│ requires the right 'iam/createGroup' for resource 'crn:cdp:iam:us-west-1:d1a4553c-a799-432d-8e54-372cc2ab95f2:account:root'}
+╵
+╷
+│ Error: Error creating Group
+│
+│   with module.cdp_deploy.module.cdp_on_aws[0].cdp_iam_group.cdp_user_group,
+│   on .terraform/modules/cdp_deploy/modules/terraform-cdp-deploy/modules/aws/main.tf line 89, in resource "cdp_iam_group" "cdp_user_group":
+│   89: resource "cdp_iam_group" "cdp_user_group" {
+│
+│ Got error while creating Group: [POST /iam/createGroup][403] createGroup default  &{Code:PERMISSION_DENIED Message:This operation
+│ requires the right 'iam/createGroup' for resource 'crn:cdp:iam:us-west-1:d1a4553c-a799-432d-8e54-372cc2ab95f2:account:root'}
+
+######################################################################################################
+0│[WARNING]: No inventory was parsed, only implicit localhost is available
+1│[WARNING]: provided hosts list is empty, only localhost is available. Note that
+2│the implicit localhost does not match 'all'
+3│ERROR! Unable to retrieve file contents
+4│Could not find or access '/root/cloudera-deploy/public-cloud/aws/cml/cloudera.exe.pbc_infra_setup.yml' on the Ansible Contro
+5│If you are using a module and expect the file to exist on the remote, see the remote_src option
+
+
+#################################################################################################################
+(cdp-navigator) [ec2-user@ip-172-31-30-97 cml]$ ansible-navigator run main.yml -m stdout
+ERROR! the playbook: /home/ec2-user/cloudera-deploy/public-cloud/aws/cml/main.yml could not be found
+Please review the log for errors.
+
+##############################################################################################################################
+

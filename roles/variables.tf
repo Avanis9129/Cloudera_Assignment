@@ -41,5 +41,5 @@ default = "dummy2"
 
 variable "policy_directory" {
   description = "Path to the directory containing policy files"
-  default     = "/home/ec2-user/Cloudera_Assignment/roles/policies"  # Set the default path or provide the path here
+  default     = "~/Cloudera_Assignment/roles/policies"  # Set the default path or provide the path here
 }
