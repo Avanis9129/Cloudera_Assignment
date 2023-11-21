@@ -11,7 +11,7 @@ cdp configure set cdp_access_key_id ${cdp_access_key}
 cdp configure set cdp_private_key ${cdp_secret_key}
 
 #deploy cdp
-cd ./cdp-tf-quickstarts/aws
+cd ./cdp-tf-quickstarts-main/aws
 terraform init
 #terraform apply --auto-approve
 cat terraform.tfvars
